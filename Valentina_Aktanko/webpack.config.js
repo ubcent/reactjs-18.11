@@ -11,7 +11,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/,
             }
@@ -22,5 +22,5 @@ module.exports = {
             template: path.resolve(__dirname, 'src', 'index.html'),
             filename: 'index.html',
         }),
-    ],
-};
+    ]
+}
