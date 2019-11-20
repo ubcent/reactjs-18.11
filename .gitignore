@@ -35,7 +35,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-Astik87/node_modules/s
+Astik87/node_modules/
 
 # TypeScript v1 declaration files
 typings/
