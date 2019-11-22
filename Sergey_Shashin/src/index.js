@@ -72,7 +72,7 @@ class TodoList extends React.Component {
 const array = ['Привет друг!', 'Как твои дела?'];
 const Message = (props) => <div>{props.text}</div>;
 const MessageList = (props) => {
-    return props.array.map((el) => <Message text={array} />)
+    return props.array.map((el) => <Message text={el} />)
 };
 
 
