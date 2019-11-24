@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 
+import { App } from 'components/App';
+
 const messages = ['Hello!', 'I am new to React.'];
 
 const Message = (props) => <div>{props.text}</div>;
@@ -9,6 +11,6 @@ const MessageList = (props) => {
 }
 
 ReactDom.render (
-    <MessageList messages={messages}/>,
-    document.getElementById('root'),
+    <App />,
+    document.getElementById('root'), 
 );
