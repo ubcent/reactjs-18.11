@@ -26,5 +26,13 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estinali/reactjs-18.11.git"
+  },
+  "bugs": {
+    "url": "https://github.com/estinali/reactjs-18.11/issues"
+  },
+  "homepage": "https://github.com/estinali/reactjs-18.11#readme"
 }
