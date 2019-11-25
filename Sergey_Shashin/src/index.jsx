@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { App } from 'components/App';
-import { MessageField } from 'components/MessageField';
-import { Message } from 'components/Message';
+import { Messanger } from 'components/Messanger';
 
 class Container extends React.Component {
   constructor(props) {
@@ -11,11 +9,7 @@ class Container extends React.Component {
 
   render() {
     return (
-      <div>        
-        <div>
-        <MessageField />
-        </div>
-      </div>)
+      <div><Messanger /></div>)
   }
 }
 
