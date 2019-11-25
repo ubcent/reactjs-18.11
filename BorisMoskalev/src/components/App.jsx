@@ -1,21 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+
+import { Counter } from './Counter';
 
 export class App extends Component {
-    state = {
-        counter: 0,
-    };
+  state = { isVisible: false };
 
-    handleClick = () => {
-        this.state.counter++;
-    };
+  handleToggle = () => {
+    this.setState({
+      isVisible: !this.state.isVisible,
+    });
+  }
 
-    render() {
-        const {counter} = this.state;
-        return (
-            <div>
-                {counter}
-                <button onClick={this.handleClick}>+1</button>
-            </div>
-        );
-    }
+  render() {
+    const { isVisible } = this.state;
+    return (
+      <div>
+        {isVisible && <Counter />}
+        <button onClick={this.handleToggle}>Toggle</button>
+      </div>
+    );
+  }
 }
