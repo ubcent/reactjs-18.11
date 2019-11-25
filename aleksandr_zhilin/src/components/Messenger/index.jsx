@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { ListMessages } from 'components/ListMessages';
+import { ListMessages } from 'components/ListMessage';
 import { FormMessage } from 'components/FormMessage';
 
 export class Messenger extends Component {
@@ -16,12 +16,12 @@ export class Messenger extends Component {
       setTimeout(() => {
         const message = {
           author: 'Bot',
-          text: 'Привет! Бот на связи! Я не понимаю вас!',
+          text: `Привет, ${author}! Бот на связи! Я не понимаю вас!`,
         };
-        this.setState({
-          listMessage: [...this.state.listMessage, message]
-        });
-      }, 2000);
+        this.setState(
+          ({ listMessage }) => ({ listMessage: [...listMessage, message] })
+        );
+      }, 1000);
     }
   }
 
@@ -30,17 +30,15 @@ export class Messenger extends Component {
   }
 
   handleMessageSend = (message) => {
-    this.setState({
-      listMessage: [...this.state.listMessage, message]
-    });
+    this.setState(
+      ({ listMessage }) => ({ listMessage: [...listMessage, message] })
+    );
   };
 
   render() {
-    const { listMessage } = this.state;
-
     return (
       <section className="div">
-        <ListMessages list={listMessage}/>
+        <ListMessages {...this.state}/>
         <FormMessage onSend={this.handleMessageSend}/>
       </section>
     );
