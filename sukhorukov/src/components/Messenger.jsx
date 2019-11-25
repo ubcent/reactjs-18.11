@@ -15,37 +15,21 @@ export class Messenger extends Component {
     ],
   }
 
-  inerval = null;
-
-  componentDidMount() {
-    // this.interval = setInterval(() => {
-    //   const randIndex = Math.floor(Math.random() * messages.length);
-
-    //   this.setState({
-    //     messages: this.state.messages.concat([{author: "Sergey", text: messages[randIndex]}])
-    //   })
-    // }, 5000)
-  }
-
   componentDidUpdate() {
     if(this.state.messages[this.state.messages.length -1].author !== "Bot"){
       setTimeout(() => {
+        let human = this.state.messages[this.state.messages.length -1].author 
         this.setState({
-          messages: this.state.messages.concat([{author: "Bot", text: "Привет, я бот. Я пока еще тупой!"}])
+          messages: this.state.messages.concat([{author: "Bot", text: `Привет ${human}, я бот. Я пока еще тупой!`}])
         })
       }, 1000);
     }
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.inerval);
   }
 
   handleMessageSend = (message) => {
     this.setState({
       messages: this.state.messages.concat([{author: message.author, text: message.text}])
     })
-    console.log(message);
   }
 
   render() {
