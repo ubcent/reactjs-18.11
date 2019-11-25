@@ -1,11 +1,11 @@
 {
-  "name": "reactjs_18.11",
+  "name": "moshe_gelberg",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production",
+    "build": "webpack --mode development",
     "dev": "webpack-dev-server --mode development"
   },
   "keywords": [],
@@ -13,7 +13,6 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.7.2",
-    "@babel/plugin-proposal-class-properties": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "babel-loader": "^8.0.6",
@@ -23,7 +22,6 @@
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
-    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
