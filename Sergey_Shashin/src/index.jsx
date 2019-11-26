@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Messanger } from 'components/Messanger';
+import { Messanger } from 'components/Messanger/Messanger';
 
 class Container extends React.Component {
   constructor(props) {
