@@ -38,14 +38,20 @@ export class Messenger extends Component {
         clearInterval(this.interval);
     }
 
+    handleMessageSend = (message) => {
+        /* TODO: */
+        console.log(message);
+    }
+
     render() {
         const { messages } = this.state;
 
         return (
             <div>
                 <ul>
-        {messages.map((message, idx) => <li key={idx}>{message.author}: {message.text}</li>)}
+                    {messages.map((message, idx) => <li key={idx}>{message.author}: {message.text}</li>)}
                 </ul>
+                <MessageForm onSend={this.handleMessageSend}/>
             </div>
         );
     }
