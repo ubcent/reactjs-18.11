@@ -1,5 +1,10 @@
+import './messageForm.css';
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import TextField from "@material-ui/core/TextField";
+import Fab from "@material-ui/core/Fab";
+import SendIcon from '@material-ui/icons/Send';
 
 import {MessagesList} from "components/MessagesList";
 
@@ -32,15 +37,23 @@ export class MessageForm extends Component {
     });
   };
 
+  handleEnterDown = (event) => {
+    if (event.ctrlKey && event.keyCode === 13) {
+      this.handleMessageSend();
+    }
+  };
+
   render() {
     const { author, text } = this.state;
 
     return (
-      <div>
+      <div className='message-form'>
         <MessagesList messages={this.props.messages} />
-        <input placeholder="author" name="author" onChange={this.handleInputChange} type="text" value={author} /><br />
-        <textarea placeholder="text" name="text" onChange={this.handleInputChange} value={text}></textarea><br/>
-        <button onClick={this.handleMessageSend}>Send</button>
+
+        <TextField id="outlined-basic" variant="outlined" label="author" name="author" onChange={this.handleInputChange} value={author} />
+        <TextField multiline id="outlined-basic" variant="outlined" label="text" name="text" onKeyDown={this.handleEnterDown} onChange={this.handleInputChange} value={text}></TextField>
+        <Fab variant="contained" color="primary" onClick={this.handleMessageSend}><SendIcon /></Fab>
+
       </div>
     );
   }

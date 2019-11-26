@@ -2,6 +2,7 @@ import './Message.scss';
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 export class Message extends Component {
 
@@ -10,15 +11,17 @@ export class Message extends Component {
     author: PropTypes.string.isRequired,
   };
 
-  get direction() {
-    return this.props.author === 'Bot' ? 'start' : 'end';
-  }
-
   render() {
+    const {author} = this.props;
+    const classes = classNames('message', {
+      'message-owner': author !== 'Bot',
+      'message-companion': author === 'Bot',
+    });
+
     return (
-      <div className='message' style={ {alignSelf: `flex-${this.direction}`} }>
+      <div className={classes}>
         <div>{ this.props.message }</div>
-        <div className='sender'>{ this.props.author }</div>
+        <div className='message-sender'>{ this.props.author }</div>
       </div>
     );
   }

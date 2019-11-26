@@ -1,3 +1,6 @@
+import 'assets/global.scss';
+import './Messenger.css';
+
 import React, {Component} from 'react';
 
 import {MessageForm} from "components/MessageForm";
@@ -6,13 +9,7 @@ import {MessageForm} from "components/MessageForm";
 export class Messenger extends Component {
 
   state = {
-    messages: [
-      {author: 'sergey', message: 'text'},
-      {author: 'anna', message: 'text2'},
-      {author: 'vlad', message: 'text3'},
-      {author: 'jhon', message: 'text4'},
-    ],
-
+    messages: [],
   };
 
 
@@ -37,7 +34,7 @@ export class Messenger extends Component {
   render() {
     const { messages } = this.state;
     return (
-      <div>
+      <div className='messenger'>
         <MessageForm messages={messages} onSend={this.handleMessageSend} />
       </div>
     );
