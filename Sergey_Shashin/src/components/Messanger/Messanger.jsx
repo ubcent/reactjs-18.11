@@ -1,34 +1,19 @@
 import React, { Component } from 'react';
-// import { MessageField } from 'components/MessageField/MessageField';
+import { MessageField } from 'components/MessageField/MessageField';
 import { MessageForm } from 'components/MessageForm/MessageForm';
-import PropTypes from 'prop-types';
-
-const messages = ['Привет', 'Как дела?', 'Как настроение?', 'Как погода?'];
 
 export class Messanger extends Component {
   state = {
-    messages: [
-      { text: 'Cтарт', author: 'Name' }
-    ],
-  }
-
-  interval = null;
-
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      const randIndex = Math.floor(Math.random() * messages.length);
-
-      this.setState({
-        messages: this.state.messages.concat([{ text: messages[randIndex], author: 'Name' }])
-      });
-    }, 5000);
+    messages: [],
   }
 
   componentDidUpdate() {
-    if (this.state.messages[this.state.messages.length - 1].author != 'Bot') {
+    const lastMessage = this.state.messages[this.state.messages.length - 1];
+
+    if (lastMessage.author != 'Bot') {
       setTimeout(() => {
         this.setState({
-          messages: this.state.messages.concat([{ text: 'Бот на связи', author: 'Bot' }])
+          messages: this.state.messages.concat([{ text: `Привет ${lastMessage.author} Бот на связи`, author: 'Bot' }])
         });
       }, 1000);
     }
@@ -39,7 +24,7 @@ export class Messanger extends Component {
   }
 
   handlMessageSend = (message) => {
-    console.log(message);
+    this.setState(({ messages }) => ({ messages: messages.concat([message]) }))
   }
 
   render() {
@@ -47,9 +32,7 @@ export class Messanger extends Component {
 
     return (
       <div>
-        <ul>
-          {messages.map((message, idx) => <li key={idx}>{message.author}: {message.text}</li>)}
-        </ul>
+        <MessageField items={messages} />
         <MessageForm onSend={this.handlMessageSend} />
       </div>
     )

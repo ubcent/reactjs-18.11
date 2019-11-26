@@ -1,14 +1,19 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export class Message extends Component{
-  static = {
-    text: PropTypes.string.isRequired
-  }
+export const messageType = {
+  autor: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
 
-  render(){
+export class Message extends Component {
+  static propTypes = messageType;
+
+  render() {
+    const { author, text } = this.props;
+
     return (
-    <h2>Сообщение</h2>
+      <li>{author}: {text}</li>
     )
   }
 }
