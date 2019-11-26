@@ -1,0 +1,11 @@
+.message {
+  background-color: aquamarine;
+  width: percentage(1/10);
+  &-owner {
+    align-self: flex-end;
+  }
+
+  &-bot {
+    align-self: flex-start;
+  }
+}

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {MessageForm} from "./MessageForm";
+import {MessageForm} from "components/MessageForm";
 
 
 export class Messenger extends Component {
@@ -17,10 +17,11 @@ export class Messenger extends Component {
 
 
   componentDidUpdate() {
-    if (this.state.messages[this.state.messages.length - 1].author !== 'Bot') {
+    const { author } = this.state.messages[this.state.messages.length - 1];
+    if (author !== 'Bot') {
       setTimeout(() => {
         this.setState({
-          messages: this.state.messages.concat([{ author: 'Bot', message: 'Привет! Бот на связи! Я не понимаю вас!',  }]),
+          messages: this.state.messages.concat([{ author: 'Bot', message: `Привет ${author}! Бот на связи!`}]),
         });
       }, 1000);
     }
