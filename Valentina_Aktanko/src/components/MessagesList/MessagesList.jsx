@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Message, messageType } from './Message';
+import { Message, messageType } from 'components/Message';
 
 export class MessagesList extends Component {
     static propTypes = {

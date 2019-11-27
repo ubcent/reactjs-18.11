@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
-import { MessagesList } from './MessagesList';
-import { MessageForm } from './MessageForm';
-
-const messages = ['Привет', 'Как дела?', 'Как настроение?', 'Как погода?'];
+import { MessagesList } from 'components/MessagesList';
+import { MessageForm } from 'components/MessageForm';
 
 export class Messenger extends Component {
     state = {
