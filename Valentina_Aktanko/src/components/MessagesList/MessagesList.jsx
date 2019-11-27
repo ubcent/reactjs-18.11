@@ -1,3 +1,5 @@
+import './MessagesList.css';
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,9 +16,9 @@ export class MessagesList extends Component {
         const { items } = this.props;
 
         return (
-            <ul>
+            <div className="messages-list">
                 {items.map((item, idx) => <Message key={idx} {...item} />)}
-            </ul>
+            </div>
         );
     }
 }
