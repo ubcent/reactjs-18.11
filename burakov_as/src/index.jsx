@@ -1,16 +1,12 @@
+import 'assets/global.css';
+
 import React from 'react';
 import ReactDom from 'react-dom';
 
-import { App } from 'components/App';
-
-const messages = ['Привет, друг!', 'How are you doing?'];
-
-const Message = (props) => <div>{props.text}</div>;
-const MessageList = (props) => {
-  return props.messages.map((message) => <Message text = {message} />)
-}
+import { Messenger } from 'components/Messenger';
+import { Layout } from 'components/Layout';
 
 ReactDom.render(
-  <App />,
+  <Layout />,
   document.getElementById('root'),
 ) 
