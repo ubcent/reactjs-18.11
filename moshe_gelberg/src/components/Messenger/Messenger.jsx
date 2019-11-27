@@ -1,16 +1,14 @@
+import './Messenger.css'
+
 import React, { Component } from 'react';
 
 import { MessagesList } from "components/MessagesList";
 import { MessageForm } from "components/MessageForm";
+import {Layout} from "components/Layout";
 
 export class Messenger extends Component {
   state = {
-    messages: [
-      {author: 'John', content: 'Hello!'},
-      {author: 'Veronica', content: 'Whats up!'},
-      {author: 'John', content: 'How is it going?'},
-      {author: 'Veronica', content: 'Awesome!'}
-    ]
+    messages: []
   };
 
   componentDidUpdate() {
@@ -34,17 +32,15 @@ export class Messenger extends Component {
   }
 
   handleMessageSend = message => {
-    this.setState(state => {
-      return { messages: state.messages.concat([message]) };
-    });
+    this.setState(() => ({ messages: [...this.state.messages, message] }));
   };
 
   render() {
     const { messages } = this.state;
 
     return (
-      <div>
-        <MessagesList messages={ messages }/>
+      <div className="messenger">
+        <Layout messages={ messages }/>
         <MessageForm onSend={ this.handleMessageSend }/>
       </div>
     )
