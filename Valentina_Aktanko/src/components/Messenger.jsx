@@ -7,40 +7,22 @@ const messages = ['Привет', 'Как дела?', 'Как настроени
 
 export class Messenger extends Component {
     state = {
-        messages: [
-            {text: 'Привет всем!', author: 'Valentina'}
-        ],
-    }
-    
-    interval = null;
-
-    componentDidMount() {
-        this.interval = setInterval(() => {
-            const randIndex  = Math.floor(Math.random() * messages.length);
-
-            this.setState({
-                messages: this.state.messages.concat([{text: messages[randIndex], author: 'Valentina'}]),
-            });
-        }, 5000);
+        messages: [],
     }
 
     componentDidUpdate() {
-        if (this.state.messages[this.state.messages.length - 1].author !== 'Bot') {
+        const { author } = this.state.messages[this.state.messages.length - 1];
+        if (author !== 'Bot') {
             setTimeout(() => {
                 this.setState({
-                    messages: this.state.messages.concat([{text: 'Привет! Бот на связи.', author: 'Bot'}]),
+                    messages: this.state.messages.concat([{text: `Привет, ${author}! Бот на связи!`, author: 'Bot'}]),
                 });
             }, 1000);
         }
     }
 
-    componentWillUnmount() {
-        clearInterval(this.interval);
-    }
-
     handleMessageSend = (message) => {
-        /* TODO: */
-        console.log(message);
+        this.setState(({ messages }) => ({ messages: messages.concat([message]) }));
     }
 
     render() {
@@ -48,10 +30,8 @@ export class Messenger extends Component {
 
         return (
             <div>
-                <ul>
-                    {messages.map((message, idx) => <li key={idx}>{message.author}: {message.text}</li>)}
-                </ul>
-                <MessageForm onSend={this.handleMessageSend}/>
+                <MessagesList items={messages}/>
+                <MessageForm onSend={this.handleMessageSend} />
             </div>
         );
     }
