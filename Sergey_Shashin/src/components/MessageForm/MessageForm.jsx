@@ -26,10 +26,10 @@ export class MessageForm extends Component {
   }
 
   handleInputChange = (event) => {
-    const FieldName = event.target.name;
+    const fieldName = event.target.name;
 
     this.setState({
-      [FieldName]: event.target.value,
+      [fieldName]: event.target.value,
     });
 
   }
