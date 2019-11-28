@@ -1,3 +1,5 @@
+import './style.scss';
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -9,7 +11,7 @@ export const ListMessages = ({ listMessage }) => {
       {
         listMessage.length > 0
           ? listMessage.map((message, indx) => <ItemMessage key={indx} {...message}/>)
-          : <li>{'В этом чате нет сообщений!'}</li>
+          : <ItemMessage author={''} text={'Сейчас здесь нет сообщений, Ваше будет первым!'}/>
       }
     </ul>
   )

@@ -3,10 +3,12 @@ import './style.scss';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { TextField, Button } from '@material-ui/core';
+
 export class FormMessage extends Component {
   state = {
-    author: 'Автор сообщения',
-    text: 'Текст сообщения'
+    author: 'User',
+    text: ''
   };
 
   static propTypes = {
@@ -35,25 +37,42 @@ export class FormMessage extends Component {
     });
   };
 
+  handleEnterDown = (event) => {
+    if (event.ctrlKey && event.keyCode === 13) {
+      this.handleMessageSend(event);
+    }
+  };
+
   render() {
     const { author, text } = this.state;
 
     return (
+
       <form className="form-message"
-            onSubmit={this.handleMessageSend}
+            noValidate
+            autoComplete="off"
       >
-        <input name="author"
-               type="text"
-               value={author}
-               onFocus={this.selectText}
-               onChange={this.handleInputChange}
+        <TextField id="standard-basic"
+                   label="Имя"
+                   name="author"
+                   value={author}
+                   onChange={this.handleInputChange}
         />
-        <textarea name="text"
-                  value={text}
-                  onFocus={this.selectText}
-                  onChange={this.handleInputChange}
+        <TextField id="standard-basic"
+                   label="Текст сообщения"
+                   multiline
+                   rows="2"
+                   name="text"
+                   value={text}
+                   onChange={this.handleInputChange}
+                   onKeyDown={this.handleEnterDown}
         />
-        <input type="submit" value={'Отправить'}/>
+        <Button variant="contained"
+                color="primary"
+                onClick={this.handleMessageSend}
+        >
+          Отправить
+        </Button>
       </form>
     );
   }

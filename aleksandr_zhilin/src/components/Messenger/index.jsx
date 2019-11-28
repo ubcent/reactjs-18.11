@@ -1,3 +1,5 @@
+import './style.scss';
+
 import React, { Component } from 'react';
 
 import { ListMessages } from 'components/ListMessage';
@@ -37,7 +39,7 @@ export class Messenger extends Component {
 
   render() {
     return (
-      <section className="div">
+      <section id="messenger">
         <ListMessages {...this.state}/>
         <FormMessage onSend={this.handleMessageSend}/>
       </section>
