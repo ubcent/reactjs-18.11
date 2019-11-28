@@ -18,7 +18,9 @@ export class MessageForm extends Component {
 
   handleMessageSend = () => {
     const {onSend} = this.props;
-    if (typeof onSend === 'function' && this.state.content !== '') {
+    if (typeof onSend === 'function' &&
+      this.state.content !== '' &&
+      this.state.author !== '') {
       onSend(this.state);
       this.setState({content: ''});
     }
@@ -52,16 +54,16 @@ export class MessageForm extends Component {
           value={author}
           onChange={this.handleInputChange}
         /><br/>
-          <TextField
-            className="text-field"
-            id="outlined-basic"
-            label="Content"
-            variant="outlined"
-            name="content"
-            value={content}
-            onKeyDown={this.handleEnterDown}
-            onChange={this.handleInputChange}
-          />
+        <TextField
+          className="text-field"
+          id="outlined-basic"
+          label="Content"
+          variant="outlined"
+          name="content"
+          value={content}
+          onKeyDown={this.handleEnterDown}
+          onChange={this.handleInputChange}
+        />
         <Fab className="send" variant="contained" color="primary" onClick={this.handleMessageSend}><SendIcon/></Fab>
       </div>
     );
