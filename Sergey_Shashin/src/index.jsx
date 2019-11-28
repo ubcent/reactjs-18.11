@@ -1,6 +1,9 @@
+import 'assets/global.scss';
+
 import React from 'react';
 import ReactDom from 'react-dom';
 import { Messanger } from 'components/Messanger/Messanger';
+import { Layout } from 'components/Layout/Layout';
 
 class Container extends React.Component {
   constructor(props) {
@@ -9,7 +12,10 @@ class Container extends React.Component {
 
   render() {
     return (
-      <div><Messanger /></div>)
+      <div>
+        {/* <Layout /> */}
+        <Messanger />
+      </div>)
   }
 }
 

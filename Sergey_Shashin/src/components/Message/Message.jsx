@@ -1,19 +1,30 @@
+import './Message.scss';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 export const messageType = {
-  autor: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
 };
 
 export class Message extends Component {
   static propTypes = messageType;
 
+
   render() {
     const { author, text } = this.props;
 
+    const classes = classNames('message', {
+      'message-owner': author !=='Bot',
+      'message-companion': author ==='Bot',
+    });
+
     return (
-      <li>{author}: {text}</li>
+      <div className={classes}>
+        <div>{text}</div>
+        <div className="message-sender"><b>{author}</b></div>
+      </div>
     )
   }
 }

@@ -1,6 +1,10 @@
+import './Messanger.scss';
 import React, { Component } from 'react';
 import { MessageField } from 'components/MessageField/MessageField';
 import { MessageForm } from 'components/MessageForm/MessageForm';
+import { Layout } from 'components/Layout/Layout';
+import { ChatList } from 'components/ChatList/Chatlist';
+import { Header } from 'components/Header/Header';
 
 export class Messanger extends Component {
   state = {
@@ -11,11 +15,9 @@ export class Messanger extends Component {
     const lastMessage = this.state.messages[this.state.messages.length - 1];
 
     if (lastMessage.author != 'Bot') {
-      setTimeout(() => {
-        this.setState({
-          messages: this.state.messages.concat([{ text: `Привет ${lastMessage.author} Бот на связи`, author: 'Bot' }])
-        });
-      }, 1000);
+      this.setState({
+        messages: this.state.messages.concat([{ text: `Привет ${lastMessage.author}`, author: 'Bot' }])
+      });
     }
   }
 
@@ -31,8 +33,13 @@ export class Messanger extends Component {
     const { messages } = this.state;
 
     return (
-      <div>
-        <MessageField items={messages} />
+      <div className="messanger">
+        <Layout />
+        <Header />
+        <div className="block-chatlist-messagefiled">
+          <ChatList />
+          <MessageField items={messages} />
+        </div>
         <MessageForm onSend={this.handlMessageSend} />
       </div>
     )
