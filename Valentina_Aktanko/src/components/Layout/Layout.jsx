@@ -8,13 +8,6 @@ import { Header } from 'components/Header';
 import { ChatList } from 'components/ChatList';
 
 export class Layout extends Component {
-    state = {
-        // Header: null,
-        // MessagesList: null,
-        // ChatList: null,
-        // MessageForm: null,
-    }
-
 
     render() {
 
