@@ -1,7 +1,9 @@
-
 .form-message {
-    display: grid;
-    grid-template-rows: 40px 120px 40px;
-    grid-gap: 8px;
-    width: 40%;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+
+    & > *:not(:last-child) {
+        margin-bottom: 10px;
+    }
 }
