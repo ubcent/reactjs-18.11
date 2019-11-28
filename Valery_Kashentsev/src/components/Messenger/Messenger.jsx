@@ -1,3 +1,5 @@
+import './Messenger.css';
+
 import React, { Component } from 'react';
 
 import { MessagesList } from 'components/MessagesList';
@@ -6,7 +8,6 @@ import { MessageForm } from 'components/MessageForm';
 export class Messenger extends Component {
   state = {
     messages: [
-      { text: 'Привет всем! Это первое сообщение', author: 'Dmitry' }
     ],
   };
 
@@ -37,10 +38,8 @@ export class Messenger extends Component {
     const { messages } = this.state;
 
     return (
-      <div>
-        <ul>
-          {messages.map((message, idx) => <li key={idx}>{message.author}: {message.text}</li>)}
-        </ul>
+      <div className="messenger">
+        <MessagesList items={messages} />
         <MessageForm onSend={this.handleMessageSend} />
       </div>
     )
