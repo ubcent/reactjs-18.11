@@ -1,3 +1,5 @@
+import './MessageForm.css';
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
@@ -41,7 +43,7 @@ export class MessageForm extends Component {
     render() {
         const { author, text } = this.state;
         return (
-            <div>
+            <div className="messageForm">
                 <TextField label="Author" name="author" placeholder="author" onChange={this.handleInputChange} value={author} />
                 <TextField label="Text" name="text" onKeyDown={this.handleEnterDown} onChange={this.handleInputChange} value={text} />
                 <Fab variant="contained" color="primary" onClick={this.handleMessageSend}><SendIcon /></Fab>

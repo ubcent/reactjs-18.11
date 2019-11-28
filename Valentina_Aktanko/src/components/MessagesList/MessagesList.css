@@ -1,7 +1,7 @@
 .messages-list {
     display: flex;
     flex-direction: column;
-    background-color: beige;
+    background-color: #e3f2fd;
     height: 50%;
     width: calc(100% - 40px);
     padding: 20px;
