@@ -18,7 +18,7 @@ export class MessageForm extends Component {
 
   handleMessageSend = () => {
     const {onSend} = this.props;
-    if (typeof onSend === 'function') {
+    if (typeof onSend === 'function' && this.state.content !== '') {
       onSend(this.state);
       this.setState({content: ''});
     }
