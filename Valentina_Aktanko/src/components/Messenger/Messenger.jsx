@@ -1,4 +1,4 @@
-import './Messenger.css';
+import './Messenger.scss';
 
 import React, { Component } from 'react';
 
@@ -30,7 +30,7 @@ export class Messenger extends Component {
 
         return (
             <div className="messenger">
-                <MessagesList items={messages}/>
+                <MessagesList items={messages} className="messenger__list" />
                 <MessageForm onSend={this.handleMessageSend} />
             </div>
         );

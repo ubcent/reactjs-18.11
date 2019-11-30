@@ -10,7 +10,7 @@ export class ChatList extends Component {
     render() {
 
         return (
-          <List>
+          <List className="chat-list">
               <ListItem>Chat 1</ListItem>
               <ListItem>Chat 2</ListItem>
               <ListItem>Chat 3</ListItem>
