@@ -11,7 +11,7 @@ ReactDom.render (
     <BrowserRouter>
         <Switch>
             <Route path="/" component={Layout}/>
-            <Route path="/chats/:chatId" component={Layout}/>
+            <Route path="/chats/:chatId/:paramN" component={Layout}/>
         </Switch>
     </BrowserRouter>,
     document.getElementById('root'), 
