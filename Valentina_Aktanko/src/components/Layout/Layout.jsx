@@ -7,7 +7,7 @@ import { Messenger } from 'components/Messenger';
 import { Header } from 'components/Header';
 import { ChatList } from 'components/ChatList';
 
-export class Layout extends Component {
+export class Layout extends Component {y
 
     render() {
 
@@ -16,10 +16,10 @@ export class Layout extends Component {
                 <Header />
                 <Container className="layout__container" maxWidth="lg">
                     <div className="layout__left">
-                        <Messenger />
+                        <ChatList/>
                     </div>
                     <div className="layout__right">
-                        <ChatList/>
+                        <Messenger />
                     </div>
                     
                 </Container>
