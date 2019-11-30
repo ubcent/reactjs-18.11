@@ -8,7 +8,13 @@ import { Messenger } from 'components/Messenger';
 import { Layout } from './components/Layout';
 
 ReactDom.render (
-    <Layout />,
+    <BrowserRouter>
+        <Switch>
+            <Route path="/" render={() => {
+                return <Layout />
+            }} />
+        </Switch>
+    </BrowserRouter>,
     document.getElementById('root'), 
     
 );
