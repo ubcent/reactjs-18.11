@@ -10,7 +10,9 @@ import { Layout } from './components/Layout';
 ReactDom.render (
     <BrowserRouter>
         <Switch>
-            <Route path="/" component={Layout} />
+            <Route path="/" render={() => {
+                return <Layout prop="1"/>
+            }} />
         </Switch>
     </BrowserRouter>,
     document.getElementById('root'), 
