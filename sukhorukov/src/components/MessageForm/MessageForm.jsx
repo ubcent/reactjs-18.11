@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 export class MessageForm extends Component {
   state = {
@@ -42,8 +43,9 @@ export class MessageForm extends Component {
 
     return(
       <div>
-        <input placeholder="author" onChange={this.handleInputChange} value={author} name="author" type="text"/><br/>
-        <textarea placeholder="text" onKeyDown={this.handleEnterDown} onChange={this.handleInputChange} value={text} name="text" id="" cols="30" rows="10"></textarea><br/>
+        <br/>
+        <TextField id="author" label="Author" variant="outlined" onChange={this.handleInputChange} value={author} name="author" /><br/><br/>
+        <TextField id="text" multiline label="Text" variant="outlined" onChange={this.handleInputChange} value={text} name="text" /><br/><br/>
         <Button variant="contained" color="primary" onClick={this.handleMessageSend}>Send</Button>
       </div>
     )

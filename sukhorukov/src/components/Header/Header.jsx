@@ -18,7 +18,7 @@ export class Header extends Component {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className="textPrimary">
-            News
+            Messenger
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
