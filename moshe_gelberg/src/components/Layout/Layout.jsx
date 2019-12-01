@@ -7,13 +7,17 @@ import { ChatList } from "components/ChatList";
 import { MessagesList } from "components/MessagesList";
 
 export class Layout extends Component {
+
   render() {
+    const { chat } = this.props;
+    const { chats } = this.props;
+
     return (
       <div className="layout">
-        <Header/>
+        <Header chat={ chat }/>
         <div className="messenger-content">
-          <ChatList/>
-          <MessagesList messages={ this.props.messages }/>
+          <ChatList chats={ chats }/>
+          <MessagesList chat={ chat }/>
         </div>
       </div>
     );
