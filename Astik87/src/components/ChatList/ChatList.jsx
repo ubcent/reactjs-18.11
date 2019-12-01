@@ -1,6 +1,7 @@
 import './ChatList.scss';
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -18,7 +19,7 @@ export class ChatList extends Component {
     return (
       <div className="chat-list">
           <List component="nav" aria-label="contacts">
-              {this.chats.map((item) => <ListItem button><ListItemText inset primary={item} /></ListItem>
+              {this.chats.map((item, idx) =><Link to={`/chats/${idx+1}`} key={idx}><ListItem button><ListItemText inset primary={item} /></ListItem></Link>
               )}
           </List>
       </div>

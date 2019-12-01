@@ -4,34 +4,66 @@ import React, { Component } from 'react';
 
 import { MessagesList } from 'components/MessagesList';
 import { MessageForm } from 'components/MessageForm';
+import { ChatList } from 'components/ChatList'
 
 export class Messenger extends Component {
   state = {
-    messages: [],
+    chats: {
+      '1': {messages: []},
+      '2': {messages: []},
+      '3': {messages: []}
+    },
   };
 
   componentDidUpdate() {
-    const { author } = this.state.messages[this.state.messages.length - 1];
-    if (author !== 'Bot') {
-      setTimeout(() => {
-        this.setState({
-          messages: this.state.messages.concat([{ text: `Привет, ${author}! Бот на связи!`, author: 'Bot' }]),
-        });
-      }, 1000);
+    let { chat } = this.props;
+
+    if (this.state.chats[chat].messages.length) {
+      const { author } = this.state.chats[chat].messages[this.state.chats[chat].messages.length - 1];
+    
+      if (author !== 'Bot') {
+        let message = {
+          author: 'Bot',
+          text: `Привет, ${author}! Бот на связи!`
+        }
+        setTimeout(() => {
+          this.handleMessageSend(message);
+        }, 1000);
+      }
     }
   }
 
   handleMessageSend = (message) => {
-    this.setState(({ messages }) => ({ messages: messages.concat([message]) }));
+    let { chat } = this.props;
+    let { chats } = this.state;
+
+    if (message.text) {
+      chats[chat].messages = chats[chat].messages.concat([message])
+      this.setState(({ chats }) => ({ chats: chats }));
+    }
+  }
+
+  get messages() {
+    let { chats } = this.state;
+    let { chat } = this.props;
+
+    let messages = [];
+    if (chat && chats[chat]) {
+      messages = chats[chat].messages;
+    }
+
+    return messages;
+
   }
 
   render() {
-    const { messages } = this.state;
-
     return (
-      <div className="messanger">
-        <MessagesList items={messages} />
-        <MessageForm onSend={this.handleMessageSend} />
+      <div className="container">
+        <ChatList />
+        <div className="messanger">
+          {this.props.chat ? <MessagesList items={this.messages} /> : 'Выберите чат'}
+          {this.props.chat && <MessageForm onSend={this.handleMessageSend} />}
+        </div>            
       </div>
     )
   }

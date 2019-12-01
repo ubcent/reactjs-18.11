@@ -43,4 +43,7 @@ module.exports = {
       filename: 'main.css',
     }),
   ],
+  devServer: {
+    historyApiFallback: true,
+  }
 };
