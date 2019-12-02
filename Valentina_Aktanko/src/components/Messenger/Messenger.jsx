@@ -39,16 +39,14 @@ export class Messenger extends Component {
     
 
     componentDidUpdate() {
-        // if (this.state.messages.length) {
-        //     const { author } = this.state.messages[this.state.messages.length - 1];
-        //     if (author !== 'Bot') {
-        //         setTimeout(() => {
-        //             this.setState({
-        //                 messages: this.state.messages.concat([{ text: `Привет, ${author}! Бот на связи!`, author: 'Bot' }]),
-        //             });
-        //         }, 1000);
-        //     }
-        // }
+        if (this.messages.length) {
+            const { author } = this.messages[this.messages.length - 1];
+            if (author !== 'Bot') {
+                setTimeout(() => {
+                    this.handleMessageSend({ text: `Привет, ${author}! Бот на связи!`, author: 'Bot' });
+                }, 1000);
+            }
+        }
     }
 
     handleMessageSend = (message) => {
