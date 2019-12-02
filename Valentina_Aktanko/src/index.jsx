@@ -4,14 +4,12 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { Layout } from './components/Layout';
-// import { Layout1 } from './components/Layout1';
+import { routes } from './routes';
 
 ReactDom.render (
     <BrowserRouter>
         <Switch>
-            <Route path="/" component={Layout}/>
-            <Route path="/chats/:chatId" component={Layout}/>
+            {routes.map((route, idx) => <Route key={idx} {...route} />)}
         </Switch>
     </BrowserRouter>,
     document.getElementById('root'), 

@@ -6,32 +6,86 @@ import { MessagesList } from 'components/MessagesList';
 import { MessageForm } from 'components/MessageForm';
 
 export class Messenger extends Component {
+
+    // state = {
+    //     messages: [],
+    // }
+
     state = {
-        messages: [],
+        chats: {
+            '1': {
+                id: 1,
+                messages: [
+                    { text: 'Привет! это чат №1', author: 'Bot' },
+                ],
+                name: 'Chat 1',
+            },
+            '2': {
+                id: 1,
+                messages: [
+                    { text: 'Привет! это чат №2', author: 'Bot' },
+                ],
+                name: 'Chat 2',
+            },
+            '3': {
+                id: 1,
+                messages: [
+                    { text: 'Привет! это чат №3', author: 'Bot' },
+                ],
+                name: 'Chat 3',
+            },
+        }
     }
+    
 
     componentDidUpdate() {
-        const { author } = this.state.messages[this.state.messages.length - 1];
-        if (author !== 'Bot') {
-            setTimeout(() => {
-                this.setState({
-                    messages: this.state.messages.concat([{text: `Привет, ${author}! Бот на связи!`, author: 'Bot'}]),
-                });
-            }, 1000);
-        }
+        // if (this.state.messages.length) {
+        //     const { author } = this.state.messages[this.state.messages.length - 1];
+        //     if (author !== 'Bot') {
+        //         setTimeout(() => {
+        //             this.setState({
+        //                 messages: this.state.messages.concat([{ text: `Привет, ${author}! Бот на связи!`, author: 'Bot' }]),
+        //             });
+        //         }, 1000);
+        //     }
+        // }
     }
 
     handleMessageSend = (message) => {
-        this.setState(({ messages }) => ({ messages: messages.concat([message]) }));
+        const { chats } = this.state;
+        const { match } = this.props;
+        
+        const chat = chats[match.params.id];
+        const messages = this.messages.concat([message]);
+        chat.messages = messages;
+
+        this.setState({ 
+            chats: {
+                ...this.state.chats,
+                [match.params.id]: chat,
+            }
+        });
+    }
+
+    get messages() {
+        const { chats } = this.state;
+        const { match } = this.props;
+
+        let messages = null;
+
+        if (match && chats[match.params.id]) {
+            messages = chats[match.params.id].messages;
+        }
+        
+        return messages;
     }
 
     render() {
-        const { messages } = this.state;
-
+        
         return (
             <div className="messenger">
-                <MessagesList items={messages} className="messenger__list" />
-                <MessageForm onSend={this.handleMessageSend} />
+                {this.messages ? <MessagesList items={this.messages} /> : 'Пожалуйста, выберите чат, чтобы продолжить общение'}
+                {this.messages && <MessageForm onSend={this.handleMessageSend} />}
             </div>
         );
     }

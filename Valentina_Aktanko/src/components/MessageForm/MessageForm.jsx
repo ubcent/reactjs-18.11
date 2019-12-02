@@ -43,7 +43,7 @@ export class MessageForm extends Component {
     render() {
         const { author, text } = this.state;
         return (
-            <div className="messageForm">
+            <div className="message-form">
                 <TextField label="Author" name="author" placeholder="author" onChange={this.handleInputChange} value={author} className="messageForm__author"/>
                 <TextField label="Text" name="text" onKeyDown={this.handleEnterDown} onChange={this.handleInputChange} value={text} className="messageForm__text"/>
                 <Fab variant="round" color="primary" onClick={this.handleMessageSend} className="messageForm__btn"><SendIcon /></Fab>
