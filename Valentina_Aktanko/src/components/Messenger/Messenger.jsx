@@ -7,10 +7,6 @@ import { MessageForm } from 'components/MessageForm';
 
 export class Messenger extends Component {
 
-    // state = {
-    //     messages: [],
-    // }
-
     state = {
         chats: {
             '1': {
