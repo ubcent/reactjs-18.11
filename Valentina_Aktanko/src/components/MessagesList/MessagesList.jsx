@@ -14,7 +14,6 @@ export class MessagesList extends Component {
 
     render() {
         const { items } = this.props;
-        console.log(this.props);
 
         return (
             <div className="messages-list">
