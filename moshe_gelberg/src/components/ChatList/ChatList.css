@@ -12,8 +12,13 @@ ul {
 .chat-list img {
     width: 45px;
     margin-right: 10px;
+    border-radius: 50%;
 }
 
 .menu-item {
     border-bottom: 1px solid #e5ddd4;
+}
+
+.chat-name {
+    color: black;
 }
