@@ -1,13 +1,13 @@
+import './Messenger.css';
+
 import React, {Component} from 'react';
 
-import {MessageField} from './MessageField';
-import {MessageForm} from './MessageForm';
+import {MessageField} from 'components/MessageField';
+import {MessageForm} from 'components/MessageForm';
 
 export class Messenger extends Component{
     state = {
-        messages: [
-            {text: 'Hi!', autor: 'Ira'}
-        ],
+        messages: [],
     }
 
     handleMessageSend = (message) => {
@@ -17,21 +17,25 @@ export class Messenger extends Component{
     }
 
     componentDidUpdate() {
-
-        if (this.state.messages[this.state.messages.length - 1].autor !== 'Bot') {
+        const {author} = this.state.messages[this.state.messages.length - 1];
+        if (author !== 'Bot') {
             setTimeout(() => {
                 this.setState({
-                    messages: this.state.messages.concat([{text: 'Бот на связи!', autor: 'Bot'}])
+                    messages: this.state.messages.concat([{text: `Привет, ${author}! Бот на связи!`, author: 'Bot'}])
                 });
             }, 1000);
         }
+    }
+
+    componentWillUnmount() {
+
     }
 
     render() {
         const {messages} = this.state;
 
         return (
-            <div>
+            <div className="messengerContainer">
                 <MessageField list={messages} />
                 <MessageForm onSend={this.handleMessageSend} />
             </div>
