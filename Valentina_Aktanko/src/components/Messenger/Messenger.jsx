@@ -33,7 +33,6 @@ export class Messenger extends Component {
         }
     }
     
-
     componentDidUpdate() {
         if (this.messages.length) {
             const { author } = this.messages[this.messages.length - 1];
@@ -75,7 +74,6 @@ export class Messenger extends Component {
     }
 
     render() {
-        
         return (
             <div className="messenger">
                 {this.messages ? <MessagesList items={this.messages} /> : 'Пожалуйста, выберите чат, чтобы продолжить общение'}
