@@ -6,10 +6,8 @@ import { ChatList } from 'components/ChatList';
 import Grid from '@material-ui/core/Grid';
 
 export class App extends Component {
-
-
   render() {
-    
+    const { match } = this.props;
     return(
       <div>
         <Header />
@@ -18,7 +16,7 @@ export class App extends Component {
             <ChatList />
           </Grid>
           <Grid item xs={8}>
-            <Messenger />
+            <Messenger match={match}/>
           </Grid>
         </Grid>    
       </div>
