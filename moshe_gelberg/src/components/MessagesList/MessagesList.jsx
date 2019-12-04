@@ -13,10 +13,11 @@ export class MessagesList extends Component {
   };
 
   render() {
-    const {messages} = this.props;
+    const { chat } = this.props;
+
     return (
       <div className="messages-list">
-        {messages.map((message, idx) => <Message key={idx} {...message}/>)}
+        { chat ? chat.messages.map((message, idx) => <Message key={idx} {...message}/>) : 'Please, choose a chat.' }
       </div>
     );
   }

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Fab from '@material-ui/core/Fab';
-import SendIcon from '@material-ui/icons/Send';
 
 export class MessageForm extends Component {
   state = {
@@ -52,7 +50,7 @@ export class MessageForm extends Component {
         <TextField multiline id="standard-basic" label="Сообщение" name="text" value={text} onChange={this.handleInputChange} onKeyDown={this.handleKeyDown} />
         <br />
         <br />
-        <Fab color="primary" aria-label="send" onClick={this.handleMessageSend}><SendIcon /></Fab>
+        <Button variant="contained" color="primary" onClick={this.handleMessageSend}>Отправить</Button>
       </div>
     )
   }
