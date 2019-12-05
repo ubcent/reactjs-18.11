@@ -1,11 +1,16 @@
+import 'assets/global.css'
+
 import React from 'react';
 import ReactDom from 'react-dom';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { Messenger } from 'components/Messenger';
-
-const container = document.getElementById('root');
+import { routes } from "./routes";
 
 ReactDom.render(
-  <Messenger/>,
-  container
+  <BrowserRouter>
+    <Switch>
+      { routes.map((route, idx) => <Route key={ idx } { ...route }/>) }
+    </Switch>
+  </BrowserRouter>,
+  document.getElementById('root')
 );

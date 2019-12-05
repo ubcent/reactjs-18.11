@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 export class MessageForm extends Component {
   state = {
@@ -22,16 +24,20 @@ export class MessageForm extends Component {
       });
     }
 
-
   }
 
   handleInputChange = (event) => {
-    const FieldName = event.target.name;
+    const fieldName = event.target.name;
 
     this.setState({
-      [FieldName]: event.target.value,
+      [fieldName]: event.target.value,
     });
+  }
 
+  handleKeyDown = (event) => {
+    if (event.ctrlKey && event.keyCode === 13) {
+      this.handleMessageSend();
+    }
   }
 
   render() {
@@ -39,11 +45,12 @@ export class MessageForm extends Component {
 
     return (
       <div>
-        <input name="author" type="text" value={author} onChange={this.handleInputChange} placeholder="Имя отправителя" />
+        <TextField id="standard-basic" label="Имя" name="author" type="text" value={author} onChange={this.handleInputChange} />
         <br />
-        <textarea name="text" value={text} onChange={this.handleInputChange} placeholder="Текст сообщения" />
+        <TextField multiline id="standard-basic" label="Сообщение" name="text" value={text} onChange={this.handleInputChange} onKeyDown={this.handleKeyDown} />
         <br />
-        <input type="submit" value="Отправить сообщение" onClick={this.handleMessageSend} />
+        <br />
+        <Button variant="contained" color="primary" onClick={this.handleMessageSend}>Отправить</Button>
       </div>
     )
   }

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 export class Bot extends Component{
   state = {
-    author: "Bot",
-    text: "",
+    author: 'Bot',
+    text: '',
   }
 
 
