@@ -13,7 +13,7 @@ export class Layout extends Component{
         <Header/>
         <div className='layout'>
           <ChatList/>
-          <Messenger/>
+          <Messenger match={this.props.match}/>
         </div>
       </div>
 
