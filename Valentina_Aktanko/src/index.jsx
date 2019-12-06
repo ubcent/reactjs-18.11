@@ -6,9 +6,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import { routes } from './routes';
+import { store } from './store';
 
 ReactDom.render (
-    <Provider>
+    <Provider store={store}>
         <BrowserRouter>
             <Switch>
                 {routes.map((route, idx) => <Route key={idx} {...route} />)}
