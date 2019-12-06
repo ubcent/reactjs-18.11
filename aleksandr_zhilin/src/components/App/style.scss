@@ -22,3 +22,9 @@
 
     height: 100vh;
 }
+
+#messenger {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 20px;
+}

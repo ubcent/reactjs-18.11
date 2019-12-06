@@ -1,6 +1,9 @@
-import React from 'react';
+import './style.scss';
+
+import React                                               from 'react';
+import { Link }                                            from 'react-router-dom';
 import { AppBar, Button, IconButton, Toolbar, Typography } from '@material-ui/core/';
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon                                            from '@material-ui/icons/Menu';
 
 import { useStyles } from './style';
 
@@ -23,11 +26,15 @@ export const Header = () => {
           >
             <MenuIcon/>
           </IconButton>
-          <Typography variant="h6"
-                      className={classes.title}
+          <Link to={'/'}
+                className={'header__logo'}
           >
-            MyChat
-          </Typography>
+            <Typography variant="h6"
+                        className={classes.title}
+            >
+              MyChat
+            </Typography>
+          </Link>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
