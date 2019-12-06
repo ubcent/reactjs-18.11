@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
+import { Map } from 'immutable';
 
-const initialState = {}
+const initialState = new Map();
 
 export const chatsReducer = handleSctions({
 
