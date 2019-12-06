@@ -6,43 +6,16 @@ import { MessagesList } from 'components/MessagesList';
 import { MessageForm } from 'components/MessageForm';
 
 export class Messenger extends PureComponent {
-
-    state = {
-        chats: {
-            '1': {
-                id: 1,
-                messages: [
-                    { text: 'Привет! это чат №1', author: 'Bot' },
-                ],
-                name: 'Chat 1',
-            },
-            '2': {
-                id: 1,
-                messages: [
-                    { text: 'Привет! это чат №2', author: 'Bot' },
-                ],
-                name: 'Chat 2',
-            },
-            '3': {
-                id: 1,
-                messages: [
-                    { text: 'Привет! это чат №3', author: 'Bot' },
-                ],
-                name: 'Chat 3',
-            },
-        }
-    }
-    
-    componentDidUpdate() {
-        if (this.messages.length) {
-            const { author } = this.messages[this.messages.length - 1];
-            if (author !== 'Bot') {
-                setTimeout(() => {
-                    this.handleMessageSend({ text: `Привет, ${author}! Бот на связи!`, author: 'Bot' });
-                }, 1000);
-            }
-        }
-    }
+    // componentDidUpdate() {
+    //     if (this.messages.length) {
+    //         const { author } = this.messages[this.messages.length - 1];
+    //         if (author !== 'Bot') {
+    //             setTimeout(() => {
+    //                 this.handleMessageSend({ text: `Привет, ${author}! Бот на связи!`, author: 'Bot' });
+    //             }, 1000);
+    //         }
+    //     }
+    // }
 
     handleMessageSend = (message) => {
         const { chats } = this.state;
@@ -61,8 +34,7 @@ export class Messenger extends PureComponent {
     }
 
     get messages() {
-        const { chats } = this.state;
-        const { match } = this.props;
+        const { match, chats } = this.props;
 
         let messages = null;
 

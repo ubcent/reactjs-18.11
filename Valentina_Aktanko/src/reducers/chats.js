@@ -8,7 +8,7 @@ const initialState = new Map({
     entries: new Map(),
 });
 
-export const chatsReducer = handleSctions({
+export const chatsReducer = handleActions({
     [load] : (state, action) => {
         return state.set('entries', fromJS({
             '1': {

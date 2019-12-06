@@ -4,15 +4,13 @@ import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
-import { Messenger } from 'components/Messenger';
+import { MessengerRedux } from 'containers/MessengerContainer';
 import { Header } from 'components/Header';
 import { ChatList } from 'components/ChatList';
 
 
 export class Layout extends Component {
 
-    
-    
     render() {
         
         return (
@@ -28,11 +26,11 @@ export class Layout extends Component {
                     <Grid container spacing={3}>
                         
                         <Grid item xs={12} sm={4}>
-                            <ChatList/>
+                            <ChatList />
                         </Grid>
                         
                         <Grid item xs={12} sm={8}>
-                            <Messenger match={this.props.match}/>
+                            <MessengerRedux match={this.props.match}/>
                         </Grid>
 
                     </Grid>
