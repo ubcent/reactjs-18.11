@@ -3,6 +3,8 @@ import './Header.scss';
 import React, { Component } from 'react';
 import Container from '@material-ui/core/Container';
 
+import { MainMenu } from 'components/MainMenu';
+
 export class Header extends Component {
 
     render() {
@@ -10,8 +12,8 @@ export class Header extends Component {
         return (
             <header className="page-header">
                 <Container className="page-header__container" maxWidth="lg">
-                    <h1>MATERIAL-UI</h1>
-                 </Container>
+                    <MainMenu />
+                </Container>
             </header>
         );
     }
