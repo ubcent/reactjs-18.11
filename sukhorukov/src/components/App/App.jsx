@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Header } from 'components/Header';
-import { Messenger } from 'components/Messenger';
+import { MessengerRedux } from 'containers/MessengerContainer';
 import { ChatList } from 'components/ChatList';
 import Grid from '@material-ui/core/Grid';
 
@@ -16,7 +16,7 @@ export class App extends Component {
             <ChatList />
           </Grid>
           <Grid item xs={8}>
-            <Messenger match={match}/>
+            <MessengerRedux match={match}/>
           </Grid>
         </Grid>    
       </div>
