@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const ChatList = ({ chatList }) => {
+export const ChatList = ({ chats }) => {
   const classes = useStyles();
   return (
     <section className={classes.root}
@@ -22,18 +22,18 @@ export const ChatList = ({ chatList }) => {
     >
       <List component="nav" aria-label="main mailbox folders">
         {
-          Object.keys(chatList).map((chatIndx, indx) => {
+          chats.map((chat, indx) => {
             return (
-              <Link key={indx} to={`/chat/${chatIndx}/`}>
+              <Link key={indx} to={chat.link}>
                 <ListItem button>
                   <ListItemIcon>
                     {
-                      !chatList[chatIndx].read
+                      !chat.read
                         ? <EmailIcon/>
                         : <DraftsIcon/>
                     }
                   </ListItemIcon>
-                  <ListItemText primary={chatList[chatIndx].name}/>
+                  <ListItemText primary={chat.name}/>
                 </ListItem>
               </Link>
             )

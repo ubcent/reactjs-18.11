@@ -8,7 +8,8 @@ import { TextField, Button } from '@material-ui/core';
 export class FormMessage extends Component {
   state = {
     author: 'User',
-    text: ''
+    text: '',
+    id: ''
   };
 
   static propTypes = {
@@ -33,7 +34,8 @@ export class FormMessage extends Component {
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
+      id: this.props.id
     });
   };
 
@@ -47,7 +49,6 @@ export class FormMessage extends Component {
     const { author, text } = this.state;
 
     return (
-
       <form className="form-message"
             noValidate
             autoComplete="off"
