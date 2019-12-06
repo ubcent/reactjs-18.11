@@ -1,11 +1,11 @@
 import './Messenger.scss';
 
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 
 import { MessagesList } from 'components/MessagesList';
 import { MessageForm } from 'components/MessageForm';
 
-export class Messenger extends Component {
+export class Messenger extends PureComponent {
 
     state = {
         chats: {
