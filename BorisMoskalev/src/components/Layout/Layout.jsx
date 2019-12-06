@@ -12,8 +12,6 @@ export class Layout extends Component {
                 </header>
                 {this.props.content}
             </div>
-
         )
-
     }
 }

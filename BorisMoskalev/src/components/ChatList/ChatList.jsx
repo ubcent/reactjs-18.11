@@ -30,7 +30,7 @@ function SimpleList() {
     return (
         <div className={classes.root}>
             <List component="nav" aria-label="Active chats">
-                <Link to="/chat/1">
+                <Link to={"/chats/1"}>
                     <ListItem button>
                         <ListItemIcon>
                             <InboxIcon/>
@@ -38,7 +38,7 @@ function SimpleList() {
                         <ListItemText primary="Chat1"/>
                     </ListItem>
                 </Link>
-                <Link to="/chat/2">
+                <Link to={"/chats/2"}>
                     <ListItem button>
                         <ListItemIcon>
                             <InboxIcon/>
@@ -49,7 +49,7 @@ function SimpleList() {
             </List>
             <Divider/>
             <List component="nav" aria-label="Inactive chats">
-                <Link to="/chat/3">
+                <Link to={"/chats/3"}>
                     <ListItem button>
                         <ListItemIcon>
                             <InboxIcon/>
@@ -57,7 +57,7 @@ function SimpleList() {
                         <ListItemText primary="Chat3"/>
                     </ListItem>
                 </Link>
-                <Link to="/chat/4">
+                <Link to={"/chats/4"}>
                     <ListItem button>
                         <ListItemIcon>
                             <InboxIcon/>

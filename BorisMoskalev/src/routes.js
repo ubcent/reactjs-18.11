@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 import {Layout} from "components/Layout"
@@ -9,22 +8,16 @@ export const routes = [
     {
         path: '/',
         exact: true,
-        render: () => {
-            return
-        <Layout content={<Messenger />} />; }
+        render: () => {return <Layout content={<Messenger />} />; }
     },
     {
         path: '/chats/:id',
         exact: true,
-        render: (params) => {
-            return
-        <Layout content={<Messenger chat={params.match.params.id} />} / >; }
+        render: (params) => {return <Layout content={<Messenger chat={params.match.params.id} />} />; }
     },
     {
         path: '/profile/',
         exact: true,
-        render: () => {
-            return
-        <Layout content={<Profile />} />;}
+        render: () => {return <Layout content={<Profile />} />;}
     }
 ];
