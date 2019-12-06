@@ -33,23 +33,13 @@ export class Messenger extends PureComponent {
         });
     }
 
-    get messages() {
-        const { match, chats } = this.props;
-
-        let messages = null;
-
-        if (match && chats[match.params.id]) {
-            messages = chats[match.params.id].messages;
-        }
-        
-        return messages;
-    }
-
     render() {
+        const { chats, messages } = this.props;
+
         return (
             <div className="messenger">
-                {this.messages ? <MessagesList items={this.messages} /> : 'Пожалуйста, выберите чат, чтобы продолжить общение'}
-                {this.messages && <MessageForm onSend={this.handleMessageSend} />}
+                {messages ? <MessagesList items={messages} /> : 'Пожалуйста, выберите чат, чтобы продолжить общение'}
+                {messages && <MessageForm onSend={this.handleMessageSend} />}
             </div>
         );
     }
