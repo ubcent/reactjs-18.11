@@ -9,4 +9,7 @@ import { initReducer } from 'reducers';
 
 export const history = createBrowserHistory();
 
-export const store = createStore(initReducer(history), applyMiddleware(logger, bot, routerMiddleware(history)));
+export const store = createStore(
+  initReducer(history),
+  applyMiddleware(logger, bot, routerMiddleware(history))
+);

@@ -43,18 +43,19 @@ function mapStateToProps(state, ownProps) {
   const lastId = state.chats.get('entries').size ? state.chats.get('entries').last().get('id') : 0;
   const newChatId = +lastId + 1;
 
-  let messages = null; 
-  
-  const currentId = state.router.location.pathname.replace(/\D/ig, '');
+  const { match } = ownProps;
 
-  if (currentId && chats.has(currentId)) {
-    messages = chats.getIn([currentId, 'messages']).toJS();
+  let messages = null; 
+  console.log('chatId', match.params.id);
+
+  if (match && chats.has(match.params.id)) {
+    messages = chats.getIn([match.params.id, 'messages']).toJS();
   }
 
   return {
     chats: chats.map((entry) => ({ name: entry.get('name'), link: `/chats/${entry.get('id')}` })).toList().toJS(),
     messages,
-    chatId: currentId,
+    chatId: match ? match.params.id : null,
     newChatId,
   }
 }
