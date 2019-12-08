@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 import { MessengerRedux } from 'containers/MessengerContainer';
-import { Header } from 'components/Header';
+import { HeaderRedux } from 'containers/HeaderContainer';
 import { ChatList } from 'components/ChatList';
 
 
@@ -17,7 +17,7 @@ export class Layout extends Component {
                 
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
-                        <Header />
+                        <HeaderRedux />
                     </Grid>
                 </Grid>
                 
