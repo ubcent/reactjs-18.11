@@ -7,12 +7,12 @@ const path = require('path');
 const Datastore = require('nedb');
 
 const chats = new Datastore({
-  filename: path.resolve(__dirname, 'server', 'chats.db'),
+  filename: path.resolve(__dirname, 'chats.db'),
   autoload: true,
 });
 
 const profile = new Datastore({
-  filename: path.resolve(__dirname, 'server', 'profile.db'),
+  filename: path.resolve(__dirname, 'profile.db'),
   autoload: true,
 });
 
