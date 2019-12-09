@@ -1,6 +1,6 @@
 import './Layout.scss';
 
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
@@ -13,6 +13,7 @@ export class Layout extends Component {
 
     render() {
         return (
+            <Fragment>
             <div className='layout'>
                 
                 <Grid container spacing={3}>
@@ -35,6 +36,7 @@ export class Layout extends Component {
                     </Grid>
                 </Container>
             </div>
+            </Fragment>
         );
     }
 }
