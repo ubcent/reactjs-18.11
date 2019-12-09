@@ -3,6 +3,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const path = require('path');
+const cors = require('cors');
 
 const Datastore = require('nedb');
 
@@ -17,6 +18,7 @@ const profile = new Datastore({
 });
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/chats', (req, res) => {
   chats.find({}, (err, docs) => {
@@ -25,6 +27,16 @@ app.get('/chats', (req, res) => {
     }
     res.json(docs);
   });
+});
+
+app.delete('/chats/:id', (req, res) => {
+  chats.remove({ _id: req.params.id }, (err) => {
+    if(err) {
+      return res.status(500).json({message: 'Unexpected error'});
+    }
+
+    res.json({ message: 'success' });
+  })
 });
 
 app.get('/profile', (req, res) => {
@@ -71,19 +83,25 @@ io.on('connection', (socket) => {
   });
 
   socket.on('new chat', (body) => {
-    chats.insert(body, (err, newDoc) => {
-      socket.broadcast.emit('chat message', newDoc);
-      socket.emit('chat message', newDoc);
+    chats.insert({...body, messages: []}, (err, newDoc) => {
+      socket.broadcast.emit('new chat', newDoc);
+      socket.emit('new chat', newDoc);
     });
   });
 
   socket.on('chat message', (body) => {
     const { chatId, ...message } = body;
     chats.update({ _id: chatId }, { $push: { messages: message } }, {}, () => {
-      chats.findOne({ _id: chatId }, (err, doc) => {
-        socket.broadcast.emit('chat message', doc);
-        socket.emit('chat message', doc);
-      });
+      socket.broadcast.emit('chat message', body);
+      socket.emit('chat message', body);
+      
+      setTimeout(() => {
+        const botMessage = { chatId, author: 'Bot', text: `Привет, ${body.author}! Бот на связи!` };
+        chats.update({ _id: chatId }, { $push: { messages: botMessage } }, {}, () => {
+          socket.broadcast.emit('chat message', botMessage);
+          socket.emit('chat message', botMessage);
+        });
+      }, 5000);
     });
   });
 });

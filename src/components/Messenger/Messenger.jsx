@@ -10,8 +10,19 @@ import { MessagesList } from 'components/MessagesList';
 import { MessageForm } from 'components/MessageForm';
 import { HeaderRedux } from 'containers/HeaderContainer';
 import { Button } from '@material-ui/core';
+import Fab from '@material-ui/core/Fab';
+import DeleteIcon from '@material-ui/icons/Remove';
+import moment from 'moment';
+
+moment.locale('ru');
 
 export class Messenger extends PureComponent {
+  handleChatRemove = (chatId) => () => {
+    const { removeChat } = this.props;
+
+    removeChat(chatId);
+  }
+
   render() {
     const { chats, messages, sendMessage, addChat } = this.props;
 
@@ -22,7 +33,8 @@ export class Messenger extends PureComponent {
           <List>
             {chats.map((chat, idx) => <ListItem key={idx}>
               <Link to={chat.link}>
-                <ListItemText primary={chat.name}></ListItemText>
+                <ListItemText primary={`[${moment(chat.timestamp).format('LLL')}] ${chat.name}`}></ListItemText>
+                <Fab variant="round" color="primary" onClick={this.handleChatRemove(chat._id)}><DeleteIcon /></Fab>
               </Link>
             </ListItem>)}
             <Button onClick={addChat}>
