@@ -16,7 +16,7 @@ export class Header extends PureComponent {
                     <MainMenu />
                     {
                         chats && chats.length && <ul>
-                            {chats.map((chat) => <li>{chat.name}</li>)}
+                            {chats.map((chat, idx) => <li key={idx}>{chat.name}</li>)}
                         </ul>
                     }
                 </Container>
