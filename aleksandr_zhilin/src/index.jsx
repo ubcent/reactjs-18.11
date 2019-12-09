@@ -1,11 +1,16 @@
 import 'assets/global.css';
 
-import React from 'react';
-import ReactDom from 'react-dom';
+import React                            from 'react';
+import ReactDom                         from 'react-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { App } from 'components/App';
+import { routes } from './routes';
 
 ReactDom.render(
-    <App/>,
-    document.getElementById('root'),
+  <BrowserRouter>
+    <Switch>
+      {routes.map((route, idx) => <Route key={idx} {...route} />)}
+    </Switch>
+  </BrowserRouter>,
+  document.getElementById('root'),
 );

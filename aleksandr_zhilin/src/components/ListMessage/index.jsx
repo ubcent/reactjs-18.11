@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { ItemMessage, messageType } from 'components/ItemMessage';
 
 export const ListMessages = ({ listMessage }) => {
+
   return (
     <ul className="list-messages">
       {
