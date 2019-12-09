@@ -12,13 +12,15 @@ export class ChatList extends PureComponent {
 
     render() {
         const { chats } = this.props;
-        // debugger;
         return (
             chats && chats.length && 
             <List className="chat-list">
                 {chats.map((chat, idx) => 
                     <Link to={`/chats/${chat.id}`}>
                         <ListItem key={idx}>
+                            <ListItemAvatar>
+                                <Avatar alt={`avatar${chat.id}`} src={chat.avatar}/>
+                            </ListItemAvatar>
                             <ListItemText primary={chat.name}></ListItemText>
                         </ListItem>
                     </Link>)

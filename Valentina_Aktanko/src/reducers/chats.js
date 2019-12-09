@@ -17,6 +17,7 @@ export const chatsReducer = handleActions({
                     { text: 'Привет! это чат №1', author: 'Bot' },
                 ],
                 name: 'Chat 1',
+                avatarSrc: 'https://material-ui.com/static/images/avatar/2.jpg',
             },
             '2': {
                 id: 2,
@@ -24,6 +25,7 @@ export const chatsReducer = handleActions({
                     { text: 'Привет! это чат №2', author: 'Bot' },
                 ],
                 name: 'Chat 2',
+                avatarSrc: 'https://material-ui.com/static/images/avatar/2.jpg',
             },
             '3': {
                 id: 3,
@@ -31,6 +33,7 @@ export const chatsReducer = handleActions({
                     { text: 'Привет! это чат №3', author: 'Bot' },
                 ],
                 name: 'Chat 3',
+                avatarSrc: 'https://material-ui.com/static/images/avatar/3.jpg',
             }
         }));
         

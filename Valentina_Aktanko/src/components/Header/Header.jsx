@@ -6,10 +6,8 @@ import Container from '@material-ui/core/Container';
 import { MainMenu } from 'components/MainMenu';
 
 export class Header extends PureComponent {
-    
 
     render() {
-        const { chats } = this.props;
         const { currentChat } = this.props;
         return (
             <header className="page-header">
