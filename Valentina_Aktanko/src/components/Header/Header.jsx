@@ -11,7 +11,6 @@ export class Header extends PureComponent {
     render() {
         const { chats } = this.props;
         const { currentChat } = this.props;
-        // debugger;
         return (
             <header className="page-header">
                 <Container className="page-header__container" maxWidth="lg">  

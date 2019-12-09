@@ -14,8 +14,7 @@ class ChatListContainer extends PureComponent {
 }
 
 function mapStateToProps(state, props) {
-    const chats = state.chats.get('entries').map((chat) => ({name: chat.get('name')})).toList().toJS();
-    // const entries = state.chats.get('entries').toJS();
+    const chats = state.chats.get('entries').map((chat) => ({name: chat.get('name'), id: chat.get('id')})).toList().toJS();
     // debugger;
     return {chats}
 }

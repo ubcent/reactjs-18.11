@@ -19,14 +19,14 @@ export const chatsReducer = handleActions({
                 name: 'Chat 1',
             },
             '2': {
-                id: 1,
+                id: 2,
                 messages: [
                     { text: 'Привет! это чат №2', author: 'Bot' },
                 ],
                 name: 'Chat 2',
             },
             '3': {
-                id: 1,
+                id: 3,
                 messages: [
                     { text: 'Привет! это чат №3', author: 'Bot' },
                 ],
