@@ -14,28 +14,23 @@ export class Layout extends Component {
     render() {
         return (
             <Fragment>
-            <div className='layout'>
-                
-                <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                        <HeaderRedux />
-                    </Grid>
-                </Grid>
-                
-                <Container className="layout__container" maxwidth="lg" minwidth="sm">
+                <div className='layout'>
                     <Grid container spacing={3}>
-                        
-                        <Grid item xs={12} sm={4}>
-                            <ChatList />
+                        <Grid item xs={12}>
+                            <HeaderRedux />
                         </Grid>
-                        
-                        <Grid item xs={12} sm={8}>
-                            <MessengerRedux match={this.props.match}/>
-                        </Grid>
-
                     </Grid>
-                </Container>
-            </div>
+                    <Container className="layout__container" maxwidth="lg" minwidth="sm">
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} sm={4}>
+                                <ChatList />
+                            </Grid>
+                            <Grid item xs={12} sm={8}>
+                                <MessengerRedux match={this.props.match}/>
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </div>
             </Fragment>
         );
     }

@@ -14,7 +14,6 @@ export class Header extends PureComponent {
             <header className="page-header">
                 <Container className="page-header__container" maxWidth="lg">
                     <MainMenu />
-                    
                     {
                         chats && chats.length && <ul>
                             {chats.map((chat) => <li>{chat.name}</li>)}
