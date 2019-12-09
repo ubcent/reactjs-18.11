@@ -1,14 +1,14 @@
-import { App } from 'components/App';
+import { AppRedux } from 'containers/AppContainer';
 
 export const routes = [
   {
     path: '/',
     exact: true,
-    component: App,
+    component: AppRedux,
   },
   {
     path: '/chat/:id',
     exact: true,
-    component: App,
+    component: AppRedux,
   }
 ];
