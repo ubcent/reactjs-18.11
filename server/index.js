@@ -63,16 +63,28 @@ app.post('/profile', (req, res) => {
 });
 
 //default namespace
-io.on('connection', function (socket) {
+io.on('connection', (socket) => {
   console.log('a user connected');
 
-  socket.on('disconnect', function () {
+  socket.on('disconnect', () => {
     console.log('user disconnected');
   });
 
-  socket.on('chat message', function (msg) {
-    console.log(msg);
-    io.emit('chat message', msg);
+  socket.on('new chat', (body) => {
+    chats.insert(body, (err, newDoc) => {
+      socket.broadcast.emit('chat message', newDoc);
+      socket.emit('chat message', newDoc);
+    });
+  });
+
+  socket.on('chat message', (body) => {
+    const { chatId, ...message } = body;
+    chats.update({ _id: chatId }, { $push: { messages: message } }, {}, () => {
+      chats.findOne({ _id: chatId }, (err, doc) => {
+        socket.broadcast.emit('chat message', doc);
+        socket.emit('chat message', doc);
+      });
+    });
   });
 });
 
