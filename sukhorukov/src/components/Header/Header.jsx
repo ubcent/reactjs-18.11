@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 export class Header extends Component {
   render() {
+    const { name } = this.props
     return (
       <AppBar position="static">
         <Toolbar>
@@ -16,7 +17,7 @@ export class Header extends Component {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className="textPrimary">
-            Messenger
+          {name}
           </Typography>
           <Button color="inherit">Login</Button>
           <Button className="textPrimary"><Link to="/profile" className="textPrimary">Profile</Link></Button>
