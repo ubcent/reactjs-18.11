@@ -10,15 +10,15 @@ export class Header extends PureComponent {
 
     render() {
         const { chats } = this.props;
+        const { currentChat } = this.props;
+        // debugger;
         return (
             <header className="page-header">
-                <Container className="page-header__container" maxWidth="lg">
+                <Container className="page-header__container" maxWidth="lg">  
                     <MainMenu />
                     {
-                        chats && chats.length && <ul>
-                            {chats.map((chat, idx) => <li key={idx}>{chat.name}</li>)}
-                        </ul>
-                    }
+                        currentChat && <h1 className="page-header__heading">Это чат № {currentChat}</h1>
+                    }   
                 </Container>
             </header>
         );

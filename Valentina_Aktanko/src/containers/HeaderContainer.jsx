@@ -6,16 +6,18 @@ import { Header } from 'components/Header';
 class HeaderContainer extends PureComponent {
     render () {
         const { chats } = this.props;
+        const { currentChat } = this.props;
 
         return (
-            <Header chats={chats}/>
+            <Header chats={chats} currentChat={currentChat}/>
         );
     }
 }
 
 function mapStateToProps(state, props) {
     const chats = state.chats.get('entries').map((chat) => ({name: chat.get('name')})).toList().toJS();
-    return {chats}
+    const currentChat = props.match.params.id;
+    return {chats, currentChat}
 }
 
 export const HeaderRedux = connect(mapStateToProps)(HeaderContainer);
