@@ -6,10 +6,11 @@ import ListItem from '@material-ui/core/ListItem';
 import { Link } from 'react-router-dom';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
+import { Button } from '@material-ui/core';
 
 export class ChatList extends Component{
   render() {
-    const {chats} = this.props;
+    const {chats, addChat} = this.props;
 
     return (
           <List className="chat-list">
@@ -18,7 +19,11 @@ export class ChatList extends Component{
                   <ListItemText primary={chat.name} />     
                 </Link>
                 <Divider variant="inset" component="li" />
-            </ListItem>)}
+            </ListItem>)
+            }
+            <Button onClick={addChat}>
+              <ListItemText primary="+ Добавить чат" />     
+            </Button>
           </List>   
     )
   }
