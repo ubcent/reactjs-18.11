@@ -8,25 +8,19 @@ import './ChatList.scss';
 
 export class ChatList extends Component {
   render() {
+    const {chats} = this.props;
+
     return (
       <div className='chat-list'>
         <List component="nav" aria-label="main mailbox folders">
 
-          <Link to="/chat/1">
-            <ListItem button>
-              <ListItemText primary="Chat 1" />
-            </ListItem>
-          </Link>
-          <Link to="/chat/2">
-            <ListItem button>
-              <ListItemText primary="Chat 2" />
-            </ListItem>
-          </Link>
-          <Link to="/chat/3">
-            <ListItem button>
-              <ListItemText primary="Chat 3" />
-            </ListItem>
-          </Link>
+          {chats.map((chat, idx)=>
+            <Link key={idx} to={chat.link}>
+              <ListItem button>
+                <ListItemText primary={chat.name} />
+              </ListItem>
+            </Link>
+          )}
 
         </List>
       </div>

@@ -3,16 +3,18 @@ import 'assets/global.scss';
 import React from 'react';
 import ReactDom from 'react-dom';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {Provider} from 'react-redux';
 
 import {routes} from './routes';
-import {Layout} from "components/Layout";
+import {store} from './store';
 
 ReactDom.render(
-  <BrowserRouter>
-    <Switch>
-      {/*<Route path="/about" component={Layout}/>*/}
-      { routes.map((route, idx)=> <Route key={idx} {...route}/>)}
-    </Switch>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <Switch>
+        { routes.map((route, idx)=> <Route key={idx} {...route}/>)}
+      </Switch>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root'),
 );
