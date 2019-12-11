@@ -32,7 +32,7 @@ export class ItemMessage extends Component {
             ? <FaceIcon/>
             : <AndroidIcon/>
         }
-        <span>{text}</span>
+        <span>{`${author}: ${text}`}</span>
       </div>
     )
   };

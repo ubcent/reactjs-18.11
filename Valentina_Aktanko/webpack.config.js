@@ -16,7 +16,10 @@ module.exports = {
             components: path.resolve(__dirname, 'src', 'components'),
             assets: path.resolve(__dirname, 'src', 'assets'),
             pages: path.resolve(__dirname, 'src', 'pages'),
-            img: path.resolve(__dirname, 'src', 'img'),
+            actions: path.resolve(__dirname, 'src', 'actions'),
+            reducers: path.resolve(__dirname, 'src', 'reducers'),
+            containers: path.resolve(__dirname, 'src', 'containers'),
+            middlewares: path.resolve(__dirname, 'src', 'middlewares'),
         }
     },
     module: {

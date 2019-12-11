@@ -9,7 +9,7 @@ export class MainMenu extends Component {
 
     render() {
         return (
-            <div>
+            <div className="main-menu">
                 <Fab aria-label="mainMenu">
                     <MenuIcon />
                 </Fab>

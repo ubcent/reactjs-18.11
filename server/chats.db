@@ -1,0 +1,25 @@
+{"name":"new chat2","messages":[{"author":"Dmitry","text":"Hello"},{"author":"Dmitry","text":"Hellio"},{"author":"Dmitry","text":"Hi"},{"author":"Dmitry","text":"Hey"},{"chatId":"6KFV9pG9cUHQIXQC","name":"Bot","text":"Привет, Dmitry! Бот на связи!"},{"author":"Dmitry","text":"Hi there!"},{"chatId":"6KFV9pG9cUHQIXQC","author":"Bot","text":"Привет, Dmitry! Бот на связи!"},{"author":"Vasya","text":"Hi"},{"chatId":"6KFV9pG9cUHQIXQC","author":"Bot","text":"Привет, Vasya! Бот на связи!"},{"author":"Petya","text":"Hello"},{"chatId":"6KFV9pG9cUHQIXQC","author":"Bot","text":"Привет, Petya! Бот на связи!"}],"_id":"6KFV9pG9cUHQIXQC"}
+{"name":"new chat","messages":[],"_id":"NmCQwCHqWbkxZpGN"}
+{"name":"new chat43","messages":[],"_id":"TgF7hN82VyhKQyu8"}
+{"name":"New chat","messages":[],"_id":"c9jFlw2fejep1Awz"}
+{"name":"Новый чат","messages":[],"_id":"hArjAMWK65G08xCn"}
+{"name":"Чат новый","messages":[],"_id":"k5MHPfF0C6k22qLC"}
+{"name":"new chat 2","messages":[],"_id":"uC7KmwLjfjAi3aj1"}
+{"name":"Какой-то крутой чат со второй вкладки","messages":[],"_id":"uXUS2GeRqDTzh7ww"}
+{"$$deleted":true,"_id":"uXUS2GeRqDTzh7ww"}
+{"$$deleted":true,"_id":"uC7KmwLjfjAi3aj1"}
+{"$$deleted":true,"_id":"k5MHPfF0C6k22qLC"}
+{"$$deleted":true,"_id":"hArjAMWK65G08xCn"}
+{"$$deleted":true,"_id":"c9jFlw2fejep1Awz"}
+{"$$deleted":true,"_id":"TgF7hN82VyhKQyu8"}
+{"$$deleted":true,"_id":"NmCQwCHqWbkxZpGN"}
+{"$$deleted":true,"_id":"6KFV9pG9cUHQIXQC"}
+{"name":"Чат 1","messages":[],"_id":"jWZH25wH49krYXf4"}
+{"name":"Чат 2","messages":[],"_id":"VvvMidExfXGEzk3K"}
+{"name":"Чат 3","messages":[],"_id":"FVEKjz4m07979iul"}
+{"name":"Чат 1","messages":[{"author":"Dmitry","text":"Hello"}],"_id":"jWZH25wH49krYXf4"}
+{"name":"Чат 1","messages":[{"author":"Dmitry","text":"Hello"},{"chatId":"jWZH25wH49krYXf4","author":"Bot","text":"Привет, Dmitry! Бот на связи!"}],"_id":"jWZH25wH49krYXf4"}
+{"name":"Чат 1","messages":[{"author":"Dmitry","text":"Hello"},{"chatId":"jWZH25wH49krYXf4","author":"Bot","text":"Привет, Dmitry! Бот на связи!"},{"author":"Dmitry","text":"Hello"}],"_id":"jWZH25wH49krYXf4"}
+{"name":"Чат 1","messages":[{"author":"Dmitry","text":"Hello"},{"chatId":"jWZH25wH49krYXf4","author":"Bot","text":"Привет, Dmitry! Бот на связи!"},{"author":"Dmitry","text":"Hello"},{"chatId":"jWZH25wH49krYXf4","author":"Bot","text":"Привет, Dmitry! Бот на связи!"}],"_id":"jWZH25wH49krYXf4"}
+{"name":"Чат 3","messages":[{"author":"Dmitry","text":"Hi there"}],"_id":"FVEKjz4m07979iul"}
+{"name":"Чат 3","messages":[{"author":"Dmitry","text":"Hi there"},{"chatId":"FVEKjz4m07979iul","author":"Bot","text":"Привет, Dmitry! Бот на связи!"}],"_id":"FVEKjz4m07979iul"}
