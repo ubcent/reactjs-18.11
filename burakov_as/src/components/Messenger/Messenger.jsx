@@ -6,12 +6,11 @@ import {MessagesList} from 'components/MessagesList';
 import {MessageForm} from 'components/MessageForm';
 import { ChatList } from 'components/ChatList';
 import { HeaderRedux } from 'containers/HeaderContainer';
-
  
 import Grid from '@material-ui/core/Grid'; 
 export class Messenger extends PureComponent{
   render() {
-    const { chats, messages, sendMessage, addChat } = this.props;
+    const { chats, messages, sendMessage, addChat, removeChat } = this.props;
   
     return (
       <Fragment>
@@ -20,7 +19,7 @@ export class Messenger extends PureComponent{
           <div className="layout">
           <Grid container>
             <Grid item xs={3}>
-              <ChatList addChat={addChat} chats={chats}/>
+              <ChatList removeChat={removeChat} addChat={addChat} chats={chats}/>
             </Grid>
               <Grid item xs={8}>            
                 <div>
