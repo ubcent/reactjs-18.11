@@ -2,16 +2,26 @@ import './Messenger.css';
 
 import React, { Component } from 'react';
 
+import Grid from '@material-ui/core/Grid';
+
 import { MessagesList } from 'components/MessagesList';
 import { MessageForm } from 'components/MessageForm';
+import { ChatList } from 'components/ChatList';
 
 export class Messenger extends Component {
   render() {
-    const { chats, messages, sendMessage } = this.props;
+    const { chats, messages, sendMessage, addChat } = this.props;
     return(
       <div className="messenger">
-        {messages ? <MessagesList messages={messages}/> : 'Пожалуйста выберите чат'}
-        {messages && <MessageForm onSend={sendMessage} />}
+        <Grid container spacing={1}>
+          <Grid item xs={4}>
+            <ChatList chats={chats} addChat={addChat}/>
+          </Grid>
+          <Grid item xs={8}>
+            {messages ? <MessagesList messages={messages} /> : 'Пожалуйста выберите чат'}
+            {messages && <MessageForm onSend={sendMessage} />}
+          </Grid>
+        </Grid>   
       </div>
     )
   }

@@ -5,8 +5,8 @@ import TextField from '@material-ui/core/TextField';
 
 export class MessageForm extends Component {
   state = {
-    author: "",
-    text: "",
+    author: '',
+    text: '',
   }
 
   static propTypes = {
