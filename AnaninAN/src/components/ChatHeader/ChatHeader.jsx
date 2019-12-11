@@ -1,15 +1,18 @@
 import './ChatHeader.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import Button from '@material-ui/core/Button';
 
-export class ChatHeader extends Component {
+export class ChatHeader extends PureComponent {
   render() {
-    const { name } = this.props;
+    const { name, addChat } = this.props;
 
     return (
       <div className="chat-header">
         <div className="chat-header__logo">
-          MyChat
+        <Button variant="contained" color="primary" onClick={addChat}>
+          Добавить чат
+        </Button>
         </div>
         <div className="chat-header__name">
           {name}

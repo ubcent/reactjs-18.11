@@ -1,6 +1,6 @@
 import './Message.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -9,7 +9,7 @@ export const messageType = {
   text: PropTypes.string.isRequired,
 };
 
-export class Message extends Component {
+export class Message extends PureComponent {
   static propTypes = messageType;
 
   render() {

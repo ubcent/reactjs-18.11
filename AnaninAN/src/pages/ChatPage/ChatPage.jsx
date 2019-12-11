@@ -1,12 +1,12 @@
 import './ChatPage.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import { ChatHeaderRedux } from 'containers/ChatHeaderContainer';
 import { ChatListRedux } from 'containers/ChatListContainer';
 import { MessengerRedux } from 'containers/MessengerContainer';
 
-export class ChatPage extends Component {
+export class ChatPage extends PureComponent {
   render() {
     const { match } = this.props;
 
