@@ -30,6 +30,7 @@ class MessengerContainer extends PureComponent {
 
 function mapStateToProps(state, ownProps) {
   const chats = state.chats.get('entries');
+
   const { match } = ownProps;
 
   let messages = null;
@@ -43,7 +44,7 @@ function mapStateToProps(state, ownProps) {
       { name: entry.get('name'), link: `/chats/${entry.get('id')}` }
       )).toList().toJS(),
     messages,
-    chatId: match ? match.params.id : null
+    chatId: match ? match.params.id : null,
   }
 }
 

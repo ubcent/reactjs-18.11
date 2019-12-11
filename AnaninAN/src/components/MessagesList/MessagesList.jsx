@@ -1,11 +1,11 @@
 import './MessagesList.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { Message, messageType } from 'components/Message';
 
-export class MessagesList extends Component {
+export class MessagesList extends PureComponent {
   static propTypes = {
     items: PropTypes.arrayOf(
       PropTypes.shape(messageType),

@@ -1,12 +1,12 @@
 import './MessageForm.scss';
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import SendIcon from '@material-ui/icons/Send';
 
-export class MessageForm extends Component {
+export class MessageForm extends PureComponent {
   state = {
     author: '',
     text: '',
