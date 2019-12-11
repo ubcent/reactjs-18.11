@@ -18,7 +18,7 @@ export class Messenger extends Component {
             <ChatList chats={chats} addChat={addChat}/>
           </Grid>
           <Grid item xs={8}>
-            {messages ? <MessagesList messages={messages} /> : 'Пожалуйста выберите чат'}
+            {messages ? <MessagesList items={messages} /> : 'Пожалуйста выберите чат'}
             {messages && <MessageForm onSend={sendMessage} />}
           </Grid>
         </Grid>   

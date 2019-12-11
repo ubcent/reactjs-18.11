@@ -31,7 +31,7 @@ class MessengerContainer extends PureComponent {
   
   render() {
     const { chats, messages } = this.props;
-    
+
     return(
       <Messenger addChat={this.handleChatAdd} sendMessage={this.handleMessageSend} messages={messages} chats={chats} />
     )
