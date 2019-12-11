@@ -8,7 +8,7 @@ import './ChatList.scss';
 
 export class ChatList extends Component {
   render() {
-    const {chats} = this.props;
+    const {chats, addChat} = this.props;
 
     return (
       <div className='chat-list'>
@@ -21,6 +21,10 @@ export class ChatList extends Component {
               </ListItem>
             </Link>
           )}
+
+          <ListItem onClick={addChat} button>
+            <ListItemText primary="+ Добавить чат" />
+          </ListItem>
 
         </List>
       </div>
