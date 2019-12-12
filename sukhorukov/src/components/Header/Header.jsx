@@ -20,6 +20,7 @@ export class Header extends Component {
           {name}
           </Typography>
           <Button color="inherit">Login</Button>
+          <Button color="inherit"><Link to="/reg" className="textPrimary">Sign in</Link></Button>
           <Button className="textPrimary"><Link to="/profile" className="textPrimary">Profile</Link></Button>
         </Toolbar>
       </AppBar>
