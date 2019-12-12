@@ -10,12 +10,12 @@ import { ChatList } from 'components/ChatList';
 
 export class Messenger extends Component {
   render() {
-    const { chats, messages, sendMessage, addChat } = this.props;
+    const { chats, messages, sendMessage, addChat, removeChat } = this.props;
     return(
       <div className="messenger">
         <Grid container spacing={1}>
           <Grid item xs={4}>
-            <ChatList chats={chats} addChat={addChat}/>
+            <ChatList chats={chats} addChat={addChat} removeChat={removeChat} />
           </Grid>
           <Grid item xs={8}>
             {messages ? <MessagesList items={messages} /> : 'Пожалуйста выберите чат'}
