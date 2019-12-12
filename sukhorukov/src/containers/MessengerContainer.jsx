@@ -2,13 +2,13 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import { Messenger } from 'components/Messenger';
-import { load, send } from 'actions/chats';
+import { sendMessage, listen,  addChatToDb, removeChat } from 'actions/chats';
 
 class MessengerContainer extends PureComponent {
   componentDidMount() {
-    const { loadChats } = this.props;
+    const { listen } = this.props;
 
-    loadChats();
+    listen();
   }
 
   handleMessageSend = (message) => {
@@ -19,11 +19,19 @@ class MessengerContainer extends PureComponent {
       chatId,
     });
   }
+
+  handleChatAdd = () => {
+    const { addChatToDb } = this.props;
+    const chatName = prompt('Введите имя чата');
+
+    addChatToDb({ name: chatName });
+  }
   
   render() {
-    const { chats, messages, sendMessage } = this.props;
+    const { chats, messages, removeChat } = this.props;
+
     return(
-      <Messenger sendMessage={this.handleMessageSend} messages={messages} chats={chats} />
+      <Messenger removeChat={removeChat} addChat={this.handleChatAdd} sendMessage={this.handleMessageSend} messages={messages} chats={chats} />
     )
   }
 }
@@ -39,7 +47,7 @@ function mapStateToProps(state, ownProps) {
   }
 
   return {
-    chats: chats.map((entry) => ({ name: entry.get('name'), link: `/chats/${entry.get('id')}` })).toList().toJS(),
+    chats: chats.sortBy((entry) => -entry.get('timestamp')).map((entry) => ({ name: entry.get('name'), link: `/chats/${entry.get('_id')}`,  _id: entry.get('_id'), timestamp: entry.get('timestamp') })).toList().toJS(),
     messages,
     chatId: match ? match.params.id : null,
   }
@@ -47,8 +55,10 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadChats: () => dispatch(load()),
-    sendMessage: (message) => dispatch(send(message)),
+    sendMessage,
+    addChatToDb,
+    listen: () => dispatch(listen()),
+    removeChat: (chatId) => dispatch(removeChat(chatId)),
   }
 }
 
