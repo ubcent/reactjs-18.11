@@ -12,6 +12,12 @@ class ProfileContainer extends PureComponent {
     loadProfile();
   }
 
+  handleUserAdd() {
+    const { addUser } = this.props;
+
+    addUser();
+  }
+
   render() {
     const { profile } = this.props;
     return(
@@ -31,6 +37,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
   return {
     loadProfile: () => dispatch(load()),
+    addUser: () => dispatch(addUser(user)),
   }
 }
 
