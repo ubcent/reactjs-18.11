@@ -2,13 +2,23 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import { ChatList } from 'components/ChatList';
+import { add } from 'actions/chats';
+import { push } from 'connected-react-router';
 
 class ChatListContainer extends PureComponent {
+    handleChatAdd = () => {
+        const { addChat, newChatId, redirect } = this.props;
+        const chatName = prompt('Введите имя чата');
+
+        addChat({ name: chatName, chatId: newChatId });
+        redirect(newChatId);
+    }
+
     render() {
         const { chats } = this.props;
 
         return (
-            <ChatList chats={chats}/>
+            <ChatList addChat={this.handleChatAdd} chats={chats}/>
         );
     }
 }
@@ -19,8 +29,18 @@ function mapStateToProps(state, props) {
         id: chat.get('id'), 
         avatar: chat.get('avatarSrc'),
     })).toList().toJS();
-    
-    return {chats}
+
+    const lastId = state.chats.get('entries').size ? state.chats.get('entries').last().get('id') : 0;
+    const newChatId = +lastId + 1;
+
+    return {chats, newChatId}
 }
 
-export const ChatListRedux = connect(mapStateToProps)(ChatListContainer);
+function mapDispatchToProps(dispatch) {
+    return {
+        addChat: (chat) => dispatch(add(chat)),
+        redirect: (id) => dispatch(push(`/chats/${id}`)),
+    }
+}
+
+export const ChatListRedux = connect(mapStateToProps, mapDispatchToProps)(ChatListContainer);
