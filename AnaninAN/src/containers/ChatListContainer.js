@@ -18,7 +18,7 @@ function mapStateToProps(state, ownProps) {
 
   return {
     chats: chats.map((entry) => (
-      { name: entry.get('name'), link: `/chats/${entry.get('id')}` }
+      { name: entry.get('name'), link: `/chats/${entry.get('_id')}` }
       )).toList().toJS(),
   }
 }
