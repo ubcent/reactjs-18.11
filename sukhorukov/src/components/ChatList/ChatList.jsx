@@ -1,30 +1,39 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import moment from 'moment';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core'
+import Fab from '@material-ui/core/Fab';
+import DeleteIcon from '@material-ui/icons/Remove';
 
-export class ChatList extends Component {
+moment.locale('ru');
+
+export class ChatList extends PureComponent {
+  handleChatRemove = (chatId) => () => {
+    const { removeChat } = this.props;
+
+    removeChat(chatId);
+  }
+
   render(){
+    const { chats, addChat } = this.props;
     return(
       <div>
         <List component="nav">
-          <ListItem button >
-            <Link to="/chats/1">
-              <ListItemText primary="Chat 1" />
+          {chats.map((chat, idx) =>
+            <ListItem button key={idx}>
+            <Link to={chat.link}>
+              <ListItemText primary={`[${moment(chat.timestamp).format('LLL')}] ${chat.name}`} />
             </Link>
+            <Fab variant="round" color="primary" onClick={this.handleChatRemove(chat._id)}><DeleteIcon /></Fab>
           </ListItem>
-          <ListItem button >
-            <Link to="/chats/2">
-              <ListItemText primary="Chat 2" />
-            </Link>
-          </ListItem>
-          <ListItem button >
-            <Link to="/chats/3">
-              <ListItemText primary="Chat 3" />
-            </Link>
-          </ListItem>
+          )}
+            <Button onClick={addChat}>
+              <ListItemText primary="Добавить чат" />
+            </Button>
         </List>
       </div>
     );

@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import { Map, fromJS } from 'immutable';
 
-import { load } from 'actions/profile';
+import { load, addUSer } from 'actions/profile';
 
 const initialState = new Map({
   entries: new Map(),
@@ -14,5 +14,10 @@ export const ProfileReducer = handleActions({
       surname: 'Sukhorukov',
       email: 'sergey@mail.ru',
     }))
+  },
+  [addUSer]: (state, action) => {
+    const { _id } = action.payload;
+
+    return state.setIn(['entries', _id], fromJS({...action.payload}))
   },
 }, initialState);
