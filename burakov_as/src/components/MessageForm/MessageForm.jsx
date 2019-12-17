@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import SendIcon from '@material-ui/icons/Send';
@@ -45,7 +46,9 @@ export class MessageForm extends Component{
       <div>
         <TextField label="Author" name="author" onChange={this.handleInputChange} value= {author} />
         <TextField label="Text" name="text" onKeyDown={this.handleEnterDown} onChange={this.handleInputChange} value={text}/>
-        <Fab variant="round" color="primary" onClick={this.handleMessageSend}><SendIcon /></Fab>
+        <IconButton color="primary" aria-label="send" onClick={this.handleMessageSend}>
+          <SendIcon  />
+        </IconButton>
       </div>
     )
   }
