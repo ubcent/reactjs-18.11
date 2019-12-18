@@ -2,13 +2,12 @@ import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
 import {Layout} from "components/Layout";
-import {load, send, add} from 'actions/chats';
-import {push} from 'connected-react-router';
+import {sendMessage, listen, createChat, removeChat} from 'actions/chats';
 
 class MessengerContainer extends PureComponent {
   componentDidMount() {
-    const {loadChats} = this.props;
-    loadChats();
+    const {listen} = this.props;
+    listen();
   };
 
   handleMessageSend = (message) => {
@@ -21,49 +20,55 @@ class MessengerContainer extends PureComponent {
   };
 
   handleChatAdd = () => {
-    const {addChat, newChatId, redirect} = this.props;
+    const {createChat, redirect} = this.props;
     const chatName = prompt('Введите название чата');
 
-    addChat({name: chatName, chatId: newChatId});
-    redirect(newChatId);
+    createChat({name: chatName});
   };
 
   render() {
-    const {chats, messages} = this.props;
+    const {chats, messages, removeChat} = this.props;
 
     return (
-      <Layout chats={chats} messages={messages} sendMessage={this.handleMessageSend} addChat={this.handleChatAdd}/>
+      <Layout
+        chats={chats}
+        messages={messages}
+        sendMessage={this.handleMessageSend}
+        addChat={this.handleChatAdd}
+        removeChat={removeChat}
+      />
     );
   }
 }
 
 function mapStateToProps(state, ownProps) {
   const chats = state.chats.get('entries');
-  const lastId = state.chats.get('entries').size ? state.chats.get('entries').last().get('id') : 0;
-  const newChatId = +lastId + 1;
   const {match} = ownProps;
 
   let messages = null;
-  // const currentId = state.router.location.pathname.replace(/\D/ig, '');
 
   if (match && chats.has(match.params.id)) {
     messages = chats.getIn([match.params.id, 'messages']).toJS();
   }
 
   return {
-    chats: chats.map((entry)=>({name: entry.get('name'), link: `/chat/${entry.get('id')}`})).toList().toJS(),
+    chats:
+      chats
+        .sortBy((entry) => -entry.get('timestamp'))
+        .map((entry)=>({name: entry.get('name'), link: `/chat/${entry.get('_id')}`, _id: entry.get('_id'), timestamp: entry.get('timestamp')}))
+        .toList()
+        .toJS(),
     messages,
     chatId: match ? match.params.id : null,
-    newChatId,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    loadChats: () => dispatch(load()),
-    sendMessage: (message) => dispatch(send(message)),
-    addChat: (chat) => dispatch(add(chat)),
-    redirect: (id) => dispatch(push(`/chat/${id}`)),
+    sendMessage,
+    createChat,
+    listen: () => dispatch(listen()),
+    removeChat: (chatId) => dispatch(removeChat(chatId)),
   };
 }
 
