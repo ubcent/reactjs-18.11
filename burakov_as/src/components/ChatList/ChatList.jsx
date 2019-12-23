@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import { Button } from '@material-ui/core';
-import Fab from '@material-ui/core/Fab';
-import DeleteIcon from '@material-ui/icons/remove';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 import moment from 'moment';
 
 moment.locale('ru');
@@ -25,12 +26,30 @@ handleChatRemove = (chatId) => () => {
 
     return (
           <List className="chat-list">
-            {chats.map((chat, idx) => <ListItem button key={idx}>
+            {chats.map((chat, idx) => 
+            <ListItem alignItems="flex-start" button key={idx}>
                 <Link className="no-decor" to={chat.link}>
-                  <ListItemText primary={`[${moment(chat.timestamp).format('LLL')}]${chat.name} `} />   
-                  <Fab variant="round" color="primary" onClick={this.handleChatRemove(chat._id)}><DeleteIcon /></Fab>
+                  <ListItemText 
+                    primary={`${chat.name} `}
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          component="span"
+                          variant="body2"
+                          className="inline"
+                          color="textPrimary"
+                        >
+                          {moment(chat.timestamp).format('LLL')}
+                        </Typography>
+                      </React.Fragment>
+                    }
+                    />   
+                    <Divider variant="fullWidth" component="li" />
                 </Link>
-                <Divider variant="inset" component="li" />
+                <IconButton aria-label="delete" onClick={this.handleChatRemove(chat._id)} edge="end">
+                  <DeleteIcon />
+                </IconButton>
+                <Divider variant="fullWidth" component="li" />
             </ListItem>)
             }
             <Button onClick={addChat}>
