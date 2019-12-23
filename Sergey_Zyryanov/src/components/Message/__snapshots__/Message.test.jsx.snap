@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message should be rendered 1`] = `
+<div
+  className="message message-owner"
+>
+  <div>
+    hello
+  </div>
+  <div
+    className="message-sender"
+  >
+    Serg
+  </div>
+</div>
+`;
